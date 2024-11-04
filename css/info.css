@@ -1,0 +1,123 @@
+/* Estilo para oscurecer el fondo */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Oculto por defecto */
+    z-index: 999;
+}
+
+/* Estilo para el cuadro de información */
+.info-libro {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Asegúrate de que esté por encima de la superposición */
+    display: none; /* Oculto por defecto */
+    width: 400px; /* Ancho del cuadro */
+    border: 1px solid #e0e0e0; /* Borde sutil */
+}
+
+.info-libro:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); /* Aumentar sombra al pasar el mouse */
+    background: #ffffff; /* Cambiar el fondo al pasar el mouse */
+}
+
+/* Estilo para el botón de cerrar */
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Título */
+#titulo-libro {
+    text-align: center;
+    font-size: 24px; /* Tamaño de fuente más grande */
+    margin: 10px 0; /* Margen superior e inferior */
+}
+
+/* Contenedor de contenido */
+.info-contenido {
+    display: flex; /* Usamos flexbox para organizar la imagen y los botones */
+    align-items: flex-start; /* Alineamos la imagen y botones al inicio */
+}
+
+
+/* Estilo para la imagen de libros en el cuadro */
+#imagen-libro {
+    width: 200px; /* Tamaño más pequeño para la caja */
+    height: auto; /* Mantiene la proporción */
+    margin-right: 20px; /* Espacio a la derecha de la imagen */
+}
+
+/* Efecto de agrandado para las imágenes de libros */
+.imagen-libro {
+    transition: transform 0.3s;
+}
+
+.info-libro:hover .imagen-libro {
+    transform: scale(1); /* No agrandar cuando el cuadro está abierto */
+}
+
+.imagen-libro:hover {
+    transform: scale(1.1); /* Aumenta el tamaño de la imagen al pasar el mouse */
+}
+
+/* Estilo para el contenedor de botones */
+.boton-contenedor {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se distribuyan en varias filas */
+    justify-content: space-between; /* Espacio entre los botones */
+}
+
+/* Estilo para los botones */
+.boton-opcion {
+    font-size: 16px; /* Tamaño de fuente adecuado */
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    width: calc(50% - 10px); /* Ancho para 2 columnas */
+    min-width: 140px; /* Ancho mínimo para evitar que el texto se corte */
+    box-sizing: border-box; /* Asegúrate de que el padding y el margen no afecten el ancho */
+    transition: background 0.3s, transform 0.2s; /* Suavizar la transición */
+}
+
+.boton-opcion:hover {
+    background: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de levantamiento */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al pasar el mouse */
+}
+
+.boton-opcion ion-icon {
+    color: black; /* Cambiar el color a negro */
+    font-size: 1.2em; /* Aumentar el tamaño de los íconos */
+    transition: color 0.3s; /* Suavizar la transición de color */
+}
+
+.boton-opcion:hover ion-icon {
+    color: #0056b3; /* Cambiar el color al pasar el mouse */
+}
+
+.visible {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se ajusten en dos columnas */
+    justify-content: space-between; /* Espacio entre botones */
+}
+

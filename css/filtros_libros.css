@@ -1,0 +1,266 @@
+* {
+    margin: 0; /* Juntarlos con margen 0 */
+    padding: 0; /**/
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Cambiado a Roboto */
+}
+
+.main{
+    display: block;
+    margin-top: 30px;
+}
+
+/* Estilos para la sección de botones de filtrado */
+.filtros {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: flex-start;
+    margin-top: 80px;
+    padding: 15px;
+    border-radius: 100%;
+}
+
+.filtro-boton {
+    background-color: rgb(60, 185, 235); 
+    color: black; /* Color de texto blanco */
+    border: none;
+    padding: 12px 80px;
+    border-radius: 10px; /* Bordes redondeados */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 30px; /* Agrega espacio horizontal entre los botones */
+    flex: 1 1 calc(48% - 20px); /* Dos columnas con espacio considerado */
+}
+
+.filtro-boton:hover {
+    color: yellow;
+    background-color: #3B90C9; 
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .filtros {
+        flex-wrap: wrap; /* Los botones se colocan en nuevas filas si el espacio es limitado */
+    }
+    .filtro-boton {
+        flex: 1 1 calc(100% - 20px); /* Botones ocupan todo el ancho en pantallas pequeñas */
+        max-width: none;
+        margin: 10px; 
+    }
+}
+
+.titulo-populares {
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 50px;
+    font-size: 36px; 
+    margin-bottom: 20px;
+    color:white;    
+    font-weight: bold;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .filtro-boton {
+        flex: 1 1 100%; /* En pantallas pequeñas, los botones ocupan todo el ancho */
+    }
+}
+
+/* Carrusel */
+.carrusel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.contenedor-libros {
+    overflow: hidden; /* Oculta los libros que se salen del contenedor */
+    width: 95%; /* Ancho ajustable */
+    display:flex;
+    justify-content: flex-start;
+    margin-bottom: 70px; /* Aumentar el margen inferior del contenedor de libros */
+}
+
+.libros {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.libro {
+    min-width: 200px;
+    margin: 0 10px;
+    background-color: #f4f4f9;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.imagen-libro {
+    width: 100%; /* Imagen ocupa todo el ancho del contenedor del libro */
+    height: 300px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.autor {
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #555;
+}
+
+.anio {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Flechas */
+.flecha {
+    background-color: transparent;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px;
+}
+
+.izquierda {
+    left: 0;
+}
+
+.derecha {
+    right: 0;
+}
+
+/* Flechas al hacer hover */
+.flecha:hover {
+    color: #333;
+}
+
+/* Opcional: para pantallas pequeñas */
+@media (max-width: 768px) {
+    .libro {
+        min-width: 150px;
+        font-size: 16px;
+    }
+    .imagen-libro {
+        height: 200px;
+    }
+}
+
+.slider-container {
+    display: flex;
+    overflow-x: scroll; /* Asegura que las imágenes se puedan desplazar */
+  }
+
+  /* ----------------------------------------------------------------------- */
+/* Estilo para el botón y el menú desplegable */
+
+.menú {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    text-align: left; 
+    margin-bottom: 30px;
+}
+
+.menú-boton:hover {
+    background-color: #2a6a8c; /* Color más oscuro al pasar el mouse */
+}
+
+.menú-content {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); 
+    background-color: #1a4e8c;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Efecto de desvanecimiento */
+    margin-top:10px;
+}
+
+.menú-content li {
+    color: #ffffff; /* Cambiar color del texto para mayor contraste */
+    padding: 12px 15px; /* Espaciado más amplio */
+    text-align: left;
+    cursor: pointer;
+    opacity: 0; /* Inicialmente oculto para el efecto de caída */
+    transform: translateY(-10px); /* Desplazado hacia arriba para la animación */
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.menú-content li:nth-child(n) {
+    animation: drop 0.3s ease forwards; /* Animación de caída */
+}
+
+.menú-content li:hover {
+    background-color: #2a8dc2; /* Color de fondo al pasar el mouse */
+    color: #fff; /* Color del texto en hover */
+}
+
+.menú:hover .menú-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s; /* Suavizar la aparición */
+}
+
+/* Efecto de caída para cada elemento */
+@keyframes drop {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menú-content li:focus {
+    outline: none; /* Eliminar el contorno predeterminado */
+    background-color: #2a8dc2; /* Mantener el mismo color al enfocar */
+}
+
+/* Agregar soporte para accesibilidad */
+.menú-content li {
+    outline: none; /* Eliminar contorno */
+}
+
+.menú-content li:hover,
+.menú-content li:focus {
+    background-color: #2a6a8c; /* Color al enfocar o pasar el mouse */
+}
+
+/* Agregar un efecto de sombra al pasar el mouse */
+.menú-content li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+    padding-left: 20px; /* Ampliar el padding para un efecto de desplazamiento */
+}
+
+/* ----------------------------------------------------------------------- */
+
+

@@ -1,0 +1,215 @@
+
+*{
+    margin: 0; /*Juntarlos con margen 0*/
+    padding:0; /**/
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', sans-serif; /*Tipo de letra*/
+}
+
+html,body{
+    height: 100%; /* Hace que el body ocupe toda la altura de la ventana */
+    position: relative; /* Asegura que los elementos hijos se posicionen correctamente */
+}
+
+body{
+    display:flex;
+    flex-direction: column; /*Organizar en sentido columna*/
+    justify-content: space-between; /*Justificar contenido al medio*/
+    align-items: center; /*Alinear los items al medio*/
+    min-height: 100vh; /* El body ocupará al menos la altura total de la pantalla */
+    position: relative; /* Esto es importante para los elementos posicionados dentro */
+    background-image: url('../img/fondo.jpg');
+    background-size: cover; /*Que el background lo cubra*/
+    background-position: center; /*Centrar el background*/
+    background-attachment: fixed;
+    transition: background 1.5s ease-in-out;
+}
+
+.header {
+    font-size: 1.5em; /* Ajustar tamaño del texto del header */
+}
+
+.background-overlay {
+    position: fixed; /* Mantiene la capa oscura fija */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa oscura con opacidad */
+    z-index: -1; /* Debajo del contenido */
+}
+
+main{
+    flex-grow:1; /* El contenido principal ocupa el espacio restante, empujando el pie de página hacia abajo */
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0; /* Debe estar encima de la capa oscura */
+}
+
+header{ /*No tiene color de fondo*/
+    position: relative; /*Ajustar posiciones*/
+    top:auto;
+    left:0;
+    width: 100%;
+    padding: 20px 5%; /*20px hacia la derecha y abajo, 100 a la derecha*/
+    display:flex; /*Poner todo un lado al otro: Logo-Casa-Sobre-Contáctanos-Inicio de sesión*/
+    flex-direction: column;
+    justify-content: space-between; /*Separarlos del logo hacia la derecha*/
+    align-items: center; /*Centrarlos*/
+    z-index: 2;
+    background-color: black;
+}
+
+.barra-separadora {
+    width: 2px; /* Ancho de la barra vertical */
+    height: 30px; /* Altura de la barra */
+    background-color: white; /* Color de la barra */
+    margin: 0 20px; /* Espaciado alrededor de la barra */
+}
+
+@media (min-width: 768px) {
+    header {
+        flex-direction: row; /* En pantallas más grandes, se vuelve fila */
+        justify-content: space-between;
+    }
+}
+
+.logo{
+    animation: logoEntrance 1s ease-out;
+    font-size: 2em; /*Tamaño del logo*/
+    color: white; /*Color blanco*/
+    user-select: none; /*Deshabilitar la selección del logo*/
+}
+
+@keyframes logoEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.barra-busqueda {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo más brillante */
+    border-radius: 40px; /* Bordes redondeados */
+    padding: 8px 20px; /* Más padding para hacerlo más grueso */
+    width: 100%; /* Ancho más largo */
+    height: 50px;
+    margin: 10px 0; /*Margen vertical*/
+    margin-left: 40px; /* Ajusta según tu diseño */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Transición suave para los efectos */
+}
+
+@media (min-width: 768px) {
+    .barra-busqueda {
+        margin-left: 40px; /* Solo en pantallas grandes */
+    }
+}
+
+.barra-busqueda:hover {
+    background-color: rgba(255, 255, 255, 1); /* Fondo más blanco al pasar el cursor */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Aumentar sombra en hover */
+}
+
+.barra-busqueda input {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    border: none; /* Sin bordes */
+    outline: none; /* Sin contorno al hacer clic */
+    background: none; /* Fondo transparente */
+    padding: 0 10px;
+    font-size: 1.2em;
+    color: rgba(13, 38, 77, 0.993); /* Color del texto */
+}
+
+.barra-busqueda input::placeholder {
+    color: rgba(13, 38, 77, 0.6); /* Color más fuerte para el placeholder */
+    font-size: 1em; /* Placeholder un poco más grande */
+}
+
+.barra-busqueda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.8em; /* Tamaño del ícono más grande */
+    color: rgba(13, 38, 77, 0.993); /* Color del ícono */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.barra-busqueda button:hover {
+    color: #ffce00; /* Color de hover */
+}
+
+/* Añade esta clase a los enlaces de navegación */
+.opciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:10px 0;
+}
+
+.opciones a{ /*Solo aplicar en la clase opciones a los hipervínculos*/
+    position: relative;
+    font-size: 1.2em; /*Tamaño de las opciones*/
+    color: white;
+    text-decoration: none; /*Quitar subrayado del hipervínculo*/
+    font-weight: 500; /*Peso*/
+    margin-left: 50px; /*Separar las opciones por 50px*/
+    margin: 0 10px;
+}
+
+.opciones a::after{ /*Colocarlo después de los hipervínculos*/
+    content: ''; /*Contenido vacío*/
+    position: absolute; /*Posición absoluta*/
+    left:0; /*Colocarlo encima de los hipervínculos*/
+    bottom: -6px; /*Ponerlo debajo de los hipervínculos*/
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    transform: scaleX(0); /*Ocultar las rayas*/
+    transition: transform .5s; /*Transición de 0.5s para que aparezcan las rayas*/
+}
+
+.opciones a:hover { /*Cambiar de color al pasar sobre ellos*/
+    color: #ffce00; /* Color de acento */
+    transition: color 0.3s ease; /*Transición en lo que se demora*/
+}
+
+.opciones a:hover::after{ /*Después de ubicar el cursor en los hipervínculos*/
+    transform: scaleX(1);
+}
+
+.opciones .btn-login{ /*Solo aplicar en la clase opciones en la clase btn-login*/
+    width: 150px; /*Largo de 150px*/
+    height: 55px; /*Alto de 55px*/
+    background: transparent; /*Color de fondo transparente*/ 
+    border: 2px solid white; /*Borde de 2px blanco*/
+    outline: none;
+    border-radius: 50px; /*Darle 5px de borde al radio*/
+    cursor: pointer; /*El cursor se vuelve un apuntandor al pasar encima del btn*/
+    font-size: 1.2em; /*Tamaño de letra*/
+    color: white; /*Color de letra*/
+    font-weight: 500;
+    margin-left: 40px; /*Darle margen para alejarlo de las opciones por 40px*/   
+    transition: .5s; /*Tarsición de 0.5s para que el cursor se de cuenta que está en el botón*/
+}
+
+.opciones .btn-login:hover{ /*Lo que pasará al poner el cursor en el botón*/
+    background: white; /*Fondo de blanco*/
+    color: darkblue; /*Letra en darkblue*/
+}
+
+
+@media (max-width: 600px) {
+    .opciones .btn-login {
+        width: 100%; /* Botón de inicio de sesión ocupa todo el ancho en pantallas pequeñas */
+    }
+}

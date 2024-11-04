@@ -1,0 +1,186 @@
+.covertura {
+    position: fixed; /*Fijar su posición*/
+    width: 400px; /*Width para que estén estirados por 500px*/
+    height: 450px; /*Altura de 400px*/
+    background: transparent; /*Background transparente*/
+    border: 2px solid rgba(255,255,255,.5); /*Borde de 2px. Solid encierra todo en un cuadrado*/
+    border-radius: 25px; /*Borde ovulado a 25px*/
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    display: flex;
+    justify-content: center; /*Mandar todo al centro horizontal*/
+    align-items: center;/*Mandar todo al centro verical*/
+    overflow: hidden;
+    transition: transform 0.5s ease, height 0.3s ease; /* Animación suave */
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 9999;
+}
+
+.covertura.active-popup {
+    transform: translate(-50%, -50%) scale(1); /*Mostrarlo*/
+}
+
+.covertura.active{
+    height: 520px;
+}
+
+.covertura .logeo{
+    width: 100%;
+    padding: 40px;
+}
+
+.covertura .logeo.login{
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+}
+
+.covertura.active .logeo.login{
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.covertura .logeo.registro{
+    position: absolute;
+    transition: transform 0.3s ease;
+    transform: translateX(400px); /*400px a la derecha*/
+}
+
+.covertura.active .logeo.registro{
+    transform: translateX(0);
+}
+
+.covertura .close{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.9);
+    font-size: 2em;
+    color: white;
+    display:flex;
+    justify-content: center; /*Alinear horizontalmente al centro*/
+    align-items: center; /*Alinear verticalmente al centro*/
+    border-bottom-left-radius: 20px;
+    cursor: pointer; /*Habilitar al pasar cursor*/ 
+    z-index: 1; /*Esto tmb lo habilita, no sé por qué*/
+}
+
+.logeo h2{ /*Modificar en los logeos*/
+    font-size: 2em; /*Tamaño de letra*/
+    color:rgba(241, 243, 245, 0.993); /*Color de letra*/
+    text-align: center; /*Centro horizontal*/
+    user-select: none; /*No se puede tocar*/
+    justify-content: center; /*Ajustar horizontalmente al centro*/
+}
+
+.cajas{ /*Modificar inputs-box*/
+    position:relative;
+    width: 100%;
+    height: 50px; /*Separarlos por 50px*/
+    border-bottom: 2px solid rgba(241, 243, 245, 0.993);
+    margin: 30px 0; /*Margen de 30px para seprarlos entre los bordes generados y los inputs. El cero es para que se alineé*/ 
+}
+
+.cajas label{ /*Modificar los labels de la clase cajas*/
+    position: absolute; /*Si se sobrepasa, uno encima del otro*/
+    top: 50%;
+    left: 5px; /*Mandarlo a la izquierda*/
+    transform: translateY(-50%); /*Mandar para arriba*/
+    font-size: 1.05em; /*Tamaño de letra*/
+    color: rgba(241, 243, 245, 0.993); /*Color de letra*/
+    font-weight: 500;
+    pointer-events: none; /*Los labels no se pueden tocar*/
+    transition: top 0.3s ease, font-size 0.3s ease; /*Que se suba en .5s*/
+}
+
+/*Cuando le de click a los inputs box, los labels subirán*/
+.cajas input:focus + label,
+.cajas input:not(:placeholder-shown) + label {
+    top: -5px; /* Subir el label */
+    font-size: 0.8em; /* Reducir tamaño */
+    color: rgba(241, 243, 245, 0.993); /* Mantener el color */
+}
+
+.cajas input{
+    width: 100%; /*Mandar los input box más abajo*/
+    height: 100%; /*Ancho de 100%*/
+    background: transparent; /*Fondo transparente*/
+    border: none; /*Quitar el borde generado del input box*/
+    outline: none;
+    font-size: 1em; /*Tamaño de las letras que ingreso en el input*/
+    color: rgba(241, 243, 245, 0.993);
+    font-weight: 600;
+    padding-top: 0 5px;
+}
+
+.cajas .icono{ /*Modificar los íconos importados con scripts previamente*/
+    position: absolute;
+    right: 8px; /*Mandar a la derecha*/
+    font-size: 1.6em; /*Tamaño de los íconos*/
+    color: rgba(241, 243, 245, 0.993); /*Color de íconos*/
+    line-height: 50px; /*Ajustar la altura*/
+}
+
+.recuerda{
+    font-size: .9em; /*Tamaño del recuérdame*/
+    color: rgba(241, 243, 245, 0.993);
+    font-weight: 700;
+    margin: -15px 0 15px;
+    display:flex; /*Uno al lado del otro*/
+    justify-content: space-between; /*Espacio entre ambos*/
+}
+
+.recuerda label input{ /*Labels e inputs de recuerda*/
+    accent-color: rgba(241, 243, 245, 0.993);
+    margin-right: 3px; /*Margen 3px a la derecha*/
+}
+
+.recuerda a{ /*Hipervínculo*/
+    color: rgba(241, 243, 245, 0.993);
+    text-decoration: none; /*Quitar subrayado*/
+    transition: .5s;
+}
+
+.recuerda a:hover{ /*Al poner el puntero, que se subraya el hipervínculo*/
+    text-decoration: underline;
+}
+
+.boton{
+    width: 100%; /*Ancho*/
+    height: 50px; /*Largo*/
+    background: rgba(16, 150, 139, 0.993); 
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer; /*Cuando se pase por encima, que sea un pointer*/
+    font-size: 1.2em;
+    color: white;
+    font-weight: 500;
+}
+
+.boton:hover {
+    background-color: #0d2650; /* Color más oscuro al hacer hover */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.registro-sesion{ /*Registrarse*/
+    font-size: .9em;
+    color: rgba(241, 243, 245, 0.993); 
+    text-align: center; /*Centrar texto*/
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.registro-sesion p a {
+    color: rgba(241, 243, 245, 0.993); 
+    text-decoration: none; /*Quitar subrayado*/
+    font-weight: 600;
+    transition: .5s;
+}
+
+.registro-sesion p a:hover{
+    text-decoration: underline; /*Subraraya al pasar encima*/
+}

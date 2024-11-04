@@ -1,0 +1,681 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+
+
+<head>
+    <meta charset="UTF-8"> <!--Caracteres especiales-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Utilizar la versión más moderna-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Diseño responsive-->
+    <title>Mundo en voz</title>  
+    <link rel="icon" href="/img/iconoprincipal.ico">
+
+    <!--Establecer conexión con css-->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/filtros_libros.css"> 
+    <link rel="stylesheet" href="/css/contacto.css"> 
+    <link rel="stylesheet" href="/css/inicio_registro.css"> 
+    <link rel="stylesheet" href="/css/pie_pagina.css">
+    <link rel="stylesheet" href="/css/pantallas.css"> 
+    <link rel="stylesheet" href="/css/info.css"> 
+    <link rel="stylesheet" href="/css/idiomas.css"> 
+    <link rel="stylesheet" href="/css/botonaudio.css">
+    <link rel="stylesheet" href="/css/filtros_libros.css"> 
+</head>
+
+<body>
+    
+    <div class="background-overlay"></div> <!-- Capa de fondo oscuro -->
+    <!--Página principal-->
+    <header> <!--Encabezado de la página-->
+        <h2 class="logo">Mundo en voz</h2> <!--Logo. clase logo-->
+
+        <div class="barra-busqueda" id="barra-busqueda">
+            <input type="text" placeholder="Ingrese el nombre del libro a buscar..." id="buscar" 
+            data-en="Enter the book name to search..." data-es="Ingrese el nombre del libro a buscar..." >
+            <button type="submit">
+                <ion-icon name="search-outline"></ion-icon>
+            </button>
+        </div>
+
+        <!--4 opciones-->
+        <nav class="opciones" arial-label = "Navegación principal"> <!--Opciones, clase opciones. Nav = elementos de navegación--> 
+            <a href="#casa" data-en="Home" data-es="Inicio" id="inicio" aria-label="Inicio">Inicio</a> 
+            <div class="barra-separadora"></div> <!-- Barra separadora -->
+            <a href="#sobre" data-en="About" data-es="Sobre" id="sobre" aria-label="Sobre">Sobre</a> 
+            <div class="barra-separadora"></div> <!-- Barra separadora -->
+            <a href="#contacto" data-en="Contact Us" data-es="Contáctanos" id="contactos" aria-label="Contáctanos">Contáctanos</a> <!--Se cambiará después por htmls separados-->
+            <button class="btn-login" aria-label="Botón para iniciar sesión" data-en="Login" data-es="Inicio de sesión" id="login">Inicio de sesión</button> <!--Botón, dentro de la clase opciones con subclase btn-login-->
+        </nav>
+
+        <!-- Botón de alternar idioma -->
+        <div class="toggle-container">
+            <span id="toggle-label" data-en="Spanish" data-es="Español">Español</span>
+            <div id="toggle" class="toggle" aria-label="Botón para alternar el idioma" onclick="cambiarIdioma()"></div>
+            <span data-en="English" data-es="Inglés">Inglés</span>
+        </div>
+
+    </header>
+
+    <div class="main">
+
+        <!-- Sección de botones de filtrado -->
+
+        <!-- Menú desplegable para Autores -->
+        <ul class="menú">
+            <li class="filtro-boton" data-en="Autors" data-es="Autores">
+                Autores 
+                <ul class="menú-content">
+                    <li class="filtro-opcion" data-es="Gabriel García Márquez">Gabriel García Márquez</li>
+                    <li class="filtro-opcion" data-es="Isabel Allende">Isabel Allende</li>
+                    <li class="filtro-opcion" data-es="Mario Vargas Llosa">Mario Vargas Llosa</li>
+                    <li class="filtro-opcion" data-es="Miguel de Cervantes">Miguel de Cervantes</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-----Menú desplegable para Géneros ----->
+        <ul class="menú">
+            <li class="filtro-boton" data-en="Genders" data-es="Generos" id="generos-boton">
+                Géneros
+                <ul class="menú-content" id="menú-generos">
+                    <li class="filtro-opcion" data-es="Terror">Terror</li>
+                    <li class="filtro-opcion" data-es="Comedia">Comedia</li>
+                    <li class="filtro-opcion" data-es="Drama">Drama</li>
+                    <li class="filtro-opcion" data-es="Suspenso">Suspenso</li>
+                </ul>
+            </li>
+        </ul>        
+
+        <!----- Menú desplegable para Idiomas ----->
+        <ul class="menú">
+            <li class="filtro-boton" data-en="Languages" data-es="Idiomas">
+                Idiomas
+                <ul class="menú-content">
+                    <li class="filtro-opcion" data-es="Español">Español</li>
+                    <li class="filtro-opcion" data-es="Inglés">Inglés</li>
+                    <li class="filtro-opcion" data-es="Francés">Francés</li>
+                    <li class="filtro-opcion" data-es="Alemán">Alemán</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+        <!----- Menú desplegable para Colecciones ----->
+        <ul class="menú">
+            <li class="filtro-boton" data-en="Collections" data-es="Colecciones">
+                Colecciones
+                <ul class="menú-content">
+                    <li class="filtro-opcion" data-es="Clásicos">Clásicos</li>
+                    <li class="filtro-opcion" data-es="Modernos">Modernos</li>
+                    <li class="filtro-opcion" data-es="Best Sellers">Best Sellers</li>
+                    <li class="filtro-opcion" data-es="Premiados">Premiados</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!----- Menú desplegable para Año de publicación ----->
+        <ul class="menú">
+            <li class="filtro-boton" data-en="Year of publication" data-es="Año de publicación">
+                Año de publicación
+                <ul class="menú-content">
+                    <li class="filtro-opcion" data-es="2024">2024</li>
+                    <li class="filtro-opcion" data-es="2023">2023</li>
+                    <li class="filtro-opcion" data-es="2022">2022</li>
+                    <li class="filtro-opcion" data-es="2021">2021</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!----- Menú desplegable para Del libro a la película ----->
+        <ul class="menú">
+            <li class="filtro-boton" data-en="Book to movie" data-es="Del libro a la película">
+                Del libro a la película
+                <ul class="menú-content">
+                    <li class="filtro-opcion" data-es="Alicia en el país de las maravillas">Alicia en el país de las maravillas</li>
+                    <li class="filtro-opcion" data-es="Las crónicas de Narnia">Las crónicas de Narnia</li>
+                    <li class="filtro-opcion" data-es="Romeo y Julieta">Romeo y Julieta</li>
+                    <li class="filtro-opcion" data-es="Los juegos del hambre">Los juegos del hambre</li>
+                </ul>
+            </li>
+        </ul>
+
+    <!-- Botón para activar/desactivar la guía de audio -->
+    <button id="toggle-audio" aria-live="polite">Desactivar audio guía</button>
+
+        <div class="seccion-libros">
+            <!--Libros más populares-->
+            <div class="seccion-populares">
+                <h2 class="titulo-populares" data-es="Los más populares" data-en="The most populars" aria-label="Los más populares">Los más populares</h2>
+                <div class="carrusel">
+                    <button class="flecha izquierda" onclick="moverCarrusel(-1, 'libros-populares')">&#10094;</button>
+                    <div class="contenedor-libros">
+                        <div class="libros libros-populares">
+                            <!--Libros-->
+                            <div class="libro" data-titulo="IT (1986)" data-imagen="/imgPopulares/IT.jpg">
+                                <img src="/imgPopulares/IT.jpg" alt="IT(1986)" class="imagen-libro">
+                                <p class="autor">Stephen King</p>
+                                <p class="anio">1986</p>
+                            </div>
+                            <div class="libro" data-titulo="Divina comedia" data-imagen="/imgPopulares/DivinaComedia.jpg">
+                                <img src="/imgPopulares/DivinaComedia.jpg" alt="Divina comedia" class="imagen-libro">
+                                <p class="autor">Dante Alighieri</p>
+                                <p class="anio">1321</p>
+                            </div>
+                            <div class="libro" data-titulo="Harry Potter y la piedra filosofal" data-imagen="/imgPopulares/HarryP-PiedraFilosofal.webp">
+                                <img src="/imgPopulares/HarryP-PiedraFilosofal.webp" alt="Harry Potter y la piedra filosofal" class="imagen-libro">
+                                <p class="autor">J.K.Rowling</p>
+                                <p class="anio">1997</p>
+                            </div>
+                            <div class="libro" data-titulo="Juegos de tronos - Canción de hielo y fuego 1" data-imagen="/imgPopulares/JuegodeTronos-CancionadeHieloyFuego1.webp">
+                                <img src="/imgPopulares/JuegodeTronos-CancionadeHieloyFuego1.webp" alt="Juegos de tronos - Canción de hielo y fuego 1" class="imagen-libro">
+                                <p class="autor">George R.R. Martin</p>
+                                <p class="anio">2012</p>
+                            </div>
+                            <div class="libro" data-titulo="Código DaVinci" data-imagen="/imgPopulares/Cod_Vinci.jpg">
+                                <img src="/imgPopulares/Cod_Vinci.jpg" alt="Código DaVinci" class="imagen-libro">
+                                <p class="autor">Dan Brown</p>
+                                <p class="anio">2003</p>
+                            </div>
+                            <div class="libro" data-titulo="Tus zonas erróneas" data-imagen="/imgPopulares/Tuszonas.GIF">
+                                <img src="/imgPopulares/Tuszonas.GIF" alt="Tus zonas erróneas" class="imagen-libro">
+                                <p class="autor">Wayne W. Dyer</p>
+                                <p class="anio">1976</p>
+                            </div>
+                            <div class="libro" data-titulo="El arte de la guerra" data-imagen="/imgPopulares/ArteGuerra.jpg">
+                                <img src="/imgPopulares/ArteGuerra.jpg" alt="El arte de la guerra" class="imagen-libro">
+                                <p class="autor">Sun Tzu</p>
+                                <p class="anio">1521</p>
+                            </div>
+                            <div class="libro" data-titulo="El diario de Anne Frank" data-imagen="/imgPopulares/AnaFrank.webp">
+                                <img src="/imgPopulares/AnaFrank.webp" alt="El diario de Anne Frank" class="imagen-libro">
+                                <p class="autor">Ana Frank</p>
+                                <p class="anio">1947</p>
+                            </div>
+                            <div class="libro" data-titulo="La biblia" data-imagen="/imgPopulares/Biblia.webp">
+                                <img src="/imgPopulares/Biblia.webp" alt="La biblia" class="imagen-libro">
+                                <p class="autor">Dios</p>
+                                <p class="anio">1750 a.C. - 110 d.C</p>
+                            </div>
+                            <div class="libro" data-titulo="La iliada" data-imagen="/imgPopulares/Iliada.jpeg">
+                                <img src="/imgPopulares/Iliada.jpeg" alt="La iliada" class="imagen-libro">
+                                <p class="autor">Homero</p>
+                                <p class="anio">1892</p>
+                            </div>
+                            <div class="libro" data-titulo="Don Quijote de la Mancha" data-imagen="/imgPopulares/DonQuijote.jpg">
+                                <img src="/imgPopulares/DonQuijote.jpg" alt="Don Quijote de la Mancha" class="imagen-libro">
+                                <p class="autor">Miguel de Cervantes</p>
+                                <p class="anio">1605</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="flecha derecha" onclick="moverCarrusel(1,'libros-populares')">&#10095;</button>
+                </div>
+            </div>
+
+            <!--Libros románticos-->
+            <div class="seccion-populares">
+                <h2 class="titulo-populares" data-es="Románticos" data-en="Romantics" aria-label="Románticos">Románticos</h2>
+                <div class="carrusel">
+                    <button class="flecha izquierda" onclick="moverCarrusel(-1, 'libros-romanticos')">&#10094;</button>
+                    <div class="contenedor-libros">
+                        <div class="libros libros-romanticos">
+                            <!--Libros-->
+                            <div class="libro" data-titulo="Romeo y Julieta" data-imagen="/imgRomanticos/RomeoJulieta.jpeg">
+                                <img src="/imgRomanticos/RomeoJulieta.jpeg" alt="Romeo y Julieta" class="imagen-libro">
+                                <p class="autor">William Shakespeare</p>
+                                <p class="anio">1597</p>
+                            </div>
+                            <div class="libro" data-titulo="Bajo la misma estrella" data-imagen="/imgRomanticos/BajoEstrellas.jpg">
+                                <img src="/imgRomanticos/BajoEstrellas.jpg" alt="Bajo la misma estrella" class="imagen-libro">
+                                <p class="autor">Jhon Green</p>
+                                <p class="anio">2012</p>
+                            </div>
+                            <div class="libro" data-titulo="Anna Karenina" data-imagen="/imgRomanticos/AnaKarenina.jpeg">
+                                <img src="/imgRomanticos/AnaKarenina.jpeg" alt="Anna Karenina" class="imagen-libro">
+                                <p class="autor">León Tolstói</p>
+                                <p class="anio">1873</p>
+                            </div>
+                            <div class="libro" data-titulo="Orgullo y Prejuicio" data-imagen="/imgRomanticos/OrgulloPrejuicio.jpeg">
+                                <img src="/imgRomanticos/OrgulloPrejuicio.jpeg" alt="Orgullo y Prejuicio" class="imagen-libro">
+                                <p class="autor">Jane Austen</p>
+                                <p class="anio">1813</p>
+                            </div>
+                            <div class="libro" data-titulo="A tres metros sobre el cielo" data-imagen="/imgRomanticos/MetrosCielo.webp">
+                                <img src="/imgRomanticos/MetrosCielo.webp" alt="A tres metros sobre el cielo" class="imagen-libro">
+                                <p class="autor">Federico Moccia</p>
+                                <p class="anio">1992</p>
+                            </div>
+                            <div class="libro" data-titulo="Jane Eyre" data-imagen="/imgRomanticos/JaneEyre.webp">
+                                <img src="/imgRomanticos/JaneEyre.webp" alt="Jane Eyre" class="imagen-libro">
+                                <p class="autor">Charlotte Bronte</p>
+                                <p class="anio">1847</p>
+                            </div>
+                            <div class="libro" data-titulo="La templanza" data-imagen="/imgRomanticos/LaTemplanza.webp">
+                                <img src="/imgRomanticos/LaTemplanza.webp" alt="La templanza" class="imagen-libro">
+                                <p class="autor">María Dueñas</p>
+                                <p class="anio">2015</p>
+                            </div>
+                            <div class="libro" data-titulo="¿Un último baile, milady?" data-imagen="/imgRomanticos/UltimoBaile.webp">
+                                <img src="/imgRomanticos/UltimoBaile.webp" alt="¿Un último baile, milady?" class="imagen-libro">
+                                <p class="autor">Megan Maxwell</p>
+                                <p class="anio">2021</p>
+                            </div>
+                            <div class="libro" data-titulo="La cocinera de Castamar" data-imagen="/imgRomanticos/CocineraCastamar.webp">
+                                <img src="/imgRomanticos/CocineraCastamar.webp" alt="La cocinera de Castamar" class="imagen-libro">
+                                <p class="autor">Fernando J.Múñez</p>
+                                <p class="anio">2019</p>
+                            </div>
+                            <div class="libro" data-titulo="Lo que el viento se llevó" data-imagen="/imgRomanticos/VientoLlevo.jpg">
+                                <img src="/imgRomanticos/VientoLlevo.jpg" alt="Lo que el viento se llevó" class="imagen-libro">
+                                <p class="autor">Margaret Mitchell</p>
+                                <p class="anio">1936</p>
+                            </div>
+                            <div class="libro" data-titulo="El amor en los tiempos de cólera" data-imagen="/imgRomanticos/AmorTiempos.jpg">
+                                <img src="/imgRomanticos/AmorTiempos.jpg" alt="El amor en los tiempos de cólera" class="imagen-libro">
+                                <p class="autor">Gabriel García Márquez</p>
+                                <p class="anio">1985</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="flecha derecha" onclick="moverCarrusel(1, 'libros-romanticos')">&#10095;</button>
+                </div>
+            </div>
+
+            <!--Libros cómicos-->
+            <div class="seccion-populares">
+                <h2 class="titulo-populares" data-es="Cómicos" data-en="Comics" aria-label="Cómicos">Cómicos</h2>
+                <div class="carrusel">
+                    <button class="flecha izquierda" onclick="moverCarrusel(-1, 'libros-comicos')">&#10094;</button>
+                    <div class="contenedor-libros">
+                        <div class="libros libros-comicos">
+                            <!--Libros-->
+                            <div class="libro" data-titulo="El abuelo que saltó por la ventana y se largó" data-imagen="/imgComicos/ElAbuelo.jpg">
+                                <img src="/imgComicos/ElAbuelo.jpg" alt="El abuelo que saltó por la ventana y se largó" class="imagen-libro">
+                                <p class="autor">Jonas Jonasson</p>
+                                <p class="anio">2009</p>
+                            </div>
+                            <div class="libro" data-titulo="Maldito karma" data-imagen="/imgComicos/MalditoKarma.webp">
+                                <img src="/imgComicos/MalditoKarma.webp" alt="Maldito karma" class="imagen-libro">
+                                <p class="autor">David Safier</p>
+                                <p class="anio">2009</p>
+                            </div>
+                            <div class="libro" data-titulo="Mi familia y otros animales" data-imagen="/imgComicos/MiFamilia.jpg">
+                                <img src="/imgComicos/MiFamilia.jpg" alt="Mi familia y otros animales" class="imagen-libro">
+                                <p class="autor">Gerald Durrell</p>
+                                <p class="anio">1956</p>
+                            </div>
+                            <div class="libro" data-titulo="¡Noticia bomba!" data-imagen="/imgComicos/NoticiaBomba.jpeg">
+                                <img src="/imgComicos/NoticiaBomba.jpeg" alt="¡Noticia bomba!" class="imagen-libro">
+                                <p class="autor">Evelyn Waugh</p>
+                                <p class="anio">1938</p>
+                            </div>
+                            <div class="libro" data-titulo="Cuentos sin plumas" data-imagen="/imgComicos/CuentosSin.jpg">
+                                <img src="/imgComicos/CuentosSin.jpg" alt="Cuentos sin plumas" class="imagen-libro">
+                                <p class="autor">Woody Allen</p>
+                                <p class="anio">1988</p>
+                            </div>
+                            <div class="libro" data-titulo="El reino vacío" data-imagen="/imgComicos/ReinoVacio.jpg">
+                                <img src="/imgComicos/ReinoVacio.jpg" alt="El reino vacío" class="imagen-libro">
+                                <p class="autor">Kira Jane Buxton</p>
+                                <p class="anio">2020</p>
+                            </div>
+                            <div class="libro" data-titulo="Lo mejor que le puede pasar a un cruasán" data-imagen="/imgComicos/Cruasan.jpg">
+                                <img src="/imgComicos/Cruasan.jpg" alt="Lo mejor que le puede pasar a un cruasán" class="imagen-libro">
+                                <p class="autor">Pablo Tusset</p>
+                                <p class="anio">2001</p>
+                            </div>
+                            <div class="libro" data-titulo="Guía del autoestopista galáctico" data-imagen="/imgComicos/Guia.webp">
+                                <img src="/imgComicos/Guia.webp" alt="Guía del autoestopista galáctico" class="imagen-libro">
+                                <p class="autor">Douglas Adams</p>
+                                <p class="anio">1979</p>
+                            </div>
+                            <div class="libro" data-titulo="El enfermo imaginario" data-imagen="/imgComicos/Enfermo.webp">
+                                <img src="/imgComicos/Enfermo.webp" alt="El enfermo imaginario" class="imagen-libro">
+                                <p class="autor">Molière</p>
+                                <p class="anio">1673</p>
+                            </div>
+                            <div class="libro" data-titulo="Sin noticias de Gurb" data-imagen="/imgComicos/SinNoticias.jpg">
+                                <img src="/imgComicos/SinNoticias.jpg" alt="Sin noticias de Gurb" class="imagen-libro">
+                                <p class="autor">Eduardo Mendoza</p>
+                                <p class="anio">1991</p>
+                            </div>
+                            <div class="libro" data-titulo="El inimitable Jeeves" data-imagen="/imgComicos/Wodehouse.webp">
+                                <img src="/imgComicos/Wodehouse.webp" alt="El inimitable Jeeves" class="imagen-libro">
+                                <p class="autor">P.G. Wodehouse</p>
+                                <p class="anio">1923</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="flecha derecha" onclick="moverCarrusel(1, 'libros-comicos')">&#10095;</button>
+                </div>
+            </div>  
+            
+            <div class="seccion-populares">
+                <h2 class="titulo-populares" data-es="Terror" data-en="Terror" aria-label="Terror">Terror</h2>
+                <div class="carrusel">
+                    <button class="flecha izquierda" onclick="moverCarrusel(-1, 'libros-terror')">&#10094;</button>
+                    <div class="contenedor-libros">
+                        <div class="libros libros-terror">
+                            <!--Libros-->
+                            <div class="libro" data-titulo="Drácula" data-imagen="/imgTerror/Dracula.webp">
+                                <img src="/imgTerror/Dracula.webp" alt="Drácula" class="imagen-libro">
+                                <p class="autor">Bram Stoker</p>
+                                <p class="anio">1897</p>
+                            </div>
+                            <div class="libro" data-titulo="Frankenstein" data-imagen="/imgTerror/Frankenstein.webp">
+                                <img src="/imgTerror/Frankenstein.webp" alt="Frankenstein" class="imagen-libro">
+                                <p class="autor">Mary Shelley</p>
+                                <p class="anio">1818</p>
+                            </div>
+                            <div class="libro" data-titulo="Carrie" data-imagen="/imgTerror/Carrie.webp">
+                                <img src="/imgTerror/Carrie.webp" alt="Carrie" class="imagen-libro">
+                                <p class="autor">Stephen King</p>
+                                <p class="anio">1974</p>
+                            </div>
+                            <div class="libro" data-titulo="Cuentos extraordinarios" data-imagen="/imgTerror/Cuentos.webp">
+                                <img src="/imgTerror/Cuentos.webp" alt="Cuentos extraordinarios" class="imagen-libro">
+                                <p class="autor">Edgar Allan Poe</p>
+                                <p class="anio">1845</p>
+                            </div>
+                            <div class="libro" data-titulo="El bazar de los malos sueños" data-imagen="/imgTerror/ElBazar.webp">
+                                <img src="/imgTerror/ElBazar.webp" alt="El bazar de los malos sueños" class="imagen-libro">
+                                <p class="autor">Stephen King</p>
+                                <p class="anio">2021</p>
+                            </div>
+                            <div class="libro" data-titulo="La semilla del diablo" data-imagen="/imgTerror/Semilla.webp">
+                                <img src="/imgTerror/Semilla.webp" alt="La semilla del diablo" class="imagen-libro">
+                                <p class="autor">Ira Levin</p>
+                                <p class="anio">1967</p>
+                            </div>
+                            <div class="libro" data-titulo="El exorcista" data-imagen="/imgTerror/ElExorcista.jpg">
+                                <img src="/imgTerror/ElExorcista.jpg" alt="El exorcista" class="imagen-libro">
+                                <p class="autor">William Peter Blatty</p>
+                                <p class="anio">1971</p>
+                            </div>
+                            <div class="libro" data-titulo="La casa infernal" data-imagen="/imgTerror/LaCasa.webp">
+                                <img src="/imgTerror/LaCasa.webp" alt="La casa infernal" class="imagen-libro">
+                                <p class="autor">Richard Matheson</p>
+                                <p class="anio">1971</p>
+                            </div>
+                            <div class="libro" data-titulo="IT (1986)" data-imagen="/imgPopulares/IT.jpg">
+                                <img src="/imgPopulares/IT.jpg" alt="IT(1986)" class="imagen-libro">
+                                <p class="autor">Stephen King</p>
+                                <p class="anio">1986</p>
+                            </div>
+                            <div class="libro" data-titulo="El quinto hijo" data-imagen="/imgTerror/Quinto.webp">
+                                <img src="/imgTerror/Quinto.webp" alt="El quinto hijo" class="imagen-libro">
+                                <p class="autor">Doris Lessing</p>
+                                <p class="anio">1988</p>
+                            </div>
+                            <div class="libro" data-titulo="Reproducción por mitosis" data-imagen="/imgTerror/Mitosis.webp">
+                                <img src="/imgTerror/Mitosis.webp" alt="Reproducción por mitosis" class="imagen-libro">
+                                <p class="autor">Shintaro Kago</p>
+                                <p class="anio">2012</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="flecha derecha" onclick="moverCarrusel(1, 'libros-terror')">&#10095;</button>
+                </div>
+            </div>  
+
+            <div class="seccion-populares">
+                <h2 class="titulo-populares" data-es="Época medieval" data-en="Medieval Era" aria-label="Época medieval">Época medieval</h2>
+                <div class="carrusel">
+                    <button class="flecha izquierda" onclick="moverCarrusel(-1, 'libros-medieval')">&#10094;</button>
+                    <div class="contenedor-libros">
+                        <div class="libros libros-medieval">
+                            <!--Libros-->
+                            <div class="libro" data-titulo="El puente de Alcántara" data-imagen="/imgMedieval/Alcantara.webp">
+                                <img src="/imgMedieval/Alcantara.webp" alt="El puente de Alcántara" class="imagen-libro">
+                                <p class="autor">Frank Baer</p>
+                                <p class="anio">1988</p>
+                            </div>
+                            <div class="libro" data-titulo="Los pilares de la Tierra" data-imagen="/imgMedieval/Pilares.webp">
+                                <img src="/imgMedieval/Pilares.webp" alt="Los pilares de la Tierra" class="imagen-libro">
+                                <p class="autor">Ken Follett</p>
+                                <p class="anio">1989</p>
+                            </div>
+                            <div class="libro" data-titulo="Nuestra señora de París" data-imagen="/imgMedieval/Senora.jpg">
+                                <img src="/imgMedieval/Senora.jpg" alt="Nuestra señora de París" class="imagen-libro">
+                                <p class="autor">Victor Hugo</p>
+                                <p class="anio">1831</p>
+                            </div>
+                            <div class="libro" data-titulo="Gente de la edad media" data-imagen="/imgMedieval/Media.webp">
+                                <img src="/imgMedieval/Media.webp" alt="Gente de la edad media" class="imagen-libro">
+                                <p class="autor">Robert Fossier</p>
+                                <p class="anio">2007</p>
+                            </div>
+                            <div class="libro" data-titulo="El nombre de la rosa" data-imagen="/imgMedieval/Rosa.jpg">
+                                <img src="/imgMedieval/Rosa.jpg" alt="El nombre de la rosa" class="imagen-libro">
+                                <p class="autor">Umberto Eco</p>
+                                <p class="anio">1980</p>
+                            </div>
+                            <div class="libro" data-titulo="El conde Belisario" data-imagen="/imgMedieval/Conde.webp">
+                                <img src="/imgMedieval/Conde.webp" alt="El conde Belisario" class="imagen-libro">
+                                <p class="autor">Robert Graves</p>
+                                <p class="anio">1938</p>
+                            </div>
+                            <div class="libro" data-titulo="Cuentos de la edad media" data-imagen="/imgMedieval/Cuentos.webp">
+                                <img src="/imgMedieval/Cuentos.webp" alt="Cuentos de la edad media" class="imagen-libro">
+                                <p class="autor">María Jesús Lacarra</p>
+                                <p class="anio">1986</p>
+                            </div>
+                            <div class="libro" data-titulo="La edad media en el cine" data-imagen="/imgMedieval/EdadMedia.jpg">
+                                <img src="/imgMedieval/EdadMedia.jpg" alt="La edad media en el cine" class="imagen-libro">
+                                <p class="autor">Enrique A. Mastache</p>
+                                <p class="anio">2007</p>
+                            </div>
+                            <div class="libro" data-titulo="Las tiniebla y el alba" data-imagen="/imgMedieval/Tinieblas.webp">
+                                <img src="/imgMedieval/Tinieblas.webp" alt="Las tiniebla y el alba" class="imagen-libro">
+                                <p class="autor">Ken Follett</p>
+                                <p class="anio">2020</p>
+                            </div>
+                            <div class="libro" data-titulo="Historia del rey transparente" data-imagen="/imgMedieval/Rey.webp">
+                                <img src="/imgMedieval/Rey.webp" alt="Historia del rey transparente" class="imagen-libro">
+                                <p class="autor">Rosa Montero</p>
+                                <p class="anio">2005</p>
+                            </div>
+                            <div class="libro" data-titulo="L'Italia dei secoli bui" data-imagen="/imgMedieval/Italia.jpg">
+                                <img src="/imgMedieval/Italia.jpg" alt="L'Italia dei secoli bui" class="imagen-libro">
+                                <p class="autor">Indro Montanelli</p>
+                                <p class="anio">1965</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="flecha derecha" onclick="moverCarrusel(1, 'libros-medieval')">&#10095;</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <!-- Cuadro de información del libro seleccionado -->
+    <div class="info-libro" id="info-libro">
+        <button class="cerrar" id="cerrar-btn">✖</button>
+        <h3 id="titulo-libro"></h3>
+        <div class="info-contenido">
+            <img id="imagen-libro" class="imagen-libro" alt="Imagen del libro">
+            <div class="botones">
+                <button class="boton-opcion" id="info-btn">Información <ion-icon name="information-circle-outline"></ion-icon></button>
+                <button class="boton-opcion" id="reproducir-btn">Reproducir audiolibro <ion-icon name="play-circle-outline"></ion-icon></button>
+                <button class="boton-opcion" id="descargar-btn">Descargar <ion-icon name="download-outline"></ion-icon></button>
+                <button class="boton-opcion" id="favoritos-btn">Agregar a favoritos <ion-icon name="add-circle-outline"></ion-icon></button>
+                <button class="boton-opcion" id="leer-btn">Leer libro <ion-icon name="book-outline"></ion-icon></button>
+                <button class="boton-opcion" id="guardar-btn">Guardar <ion-icon name="bookmark-outline"></ion-icon></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cuadro de información -->
+    <div class="info-cuadro" id="info-cuadro">
+        <p data-es="Mundo en Voz es una página web de audiolibros gratuita que tiene 
+            como objetivo ser simple, inclusiva y equitativa con todos los usuarios, 
+            especialmente con las personas con discapacidad auditiva o visual. 
+            Para ello, se implementaron herramientas accesibles que mejoran la experiencia 
+            de todos los usuarios, brindando un servicio más comprensivo." 
+            data-en="Mundo en Voz is a free audiobook website that has the objective to be simple, inclusive and equitable with all users, 
+            especially with people with hearing or visual disabilities. 
+            To do this, accessible tools were implemented that improve the experience 
+            of all users, providing a more comprehensive service."
+            aria-label="Mundo en Voz es una página web de audiolibros gratuita que tiene 
+            como objetivo ser simple, inclusiva y equitativa con todos los usuarios, 
+            especialmente con las personas con discapacidad auditiva o visual. 
+            Para ello, se implementaron herramientas accesibles que mejoran la experiencia 
+            de todos los usuarios, brindando un servicio más comprensivo.">
+            Mundo en Voz es una página web de audiolibros gratuita que tiene 
+            como objetivo ser simple, inclusiva y equitativa con todos los usuarios, 
+            especialmente con las personas con discapacidad auditiva o visual. 
+            Para ello, se implementaron herramientas accesibles que mejoran la experiencia 
+            de todos los usuarios, brindando un servicio más comprensivo.</p>
+    </div>
+
+    <div class="imagenes" aria-label="Imágenes representativas de inclusión y equidad">
+        <img src="/img/dis_visual.jpg" alt="Imagen de discapacidad visual">
+        <img src="/img/dis_audi.jpeg" alt="Imagen de discapacidad auditiva">
+        <img src="/img/equidad.png" alt="Imagen de equidad social">
+    </div>
+
+    
+    <div class="contacto" id="contacto" aria-labelledby="contacto-info">
+        <div class="contacto-info">
+            <div class="contacto-item" data-nombre="Gonzalo Flores">
+                <img src="/img/Gonzalo.jpg" alt="Imagen de Gonzalo">
+                <p data-es="Nombre: Gonzalo Andrhé Flores Coral" data-en="Name: Gonzalo Andrhé Flores Coral"><ion-icon name="accessibility-outline"></ion-icon> Nombre: Gonzalo Andrhé Flores Coral</p>
+                <p data-es="Correo: N00349919@upn.pe" data-en="Email: N00349919@upn.pe"><ion-icon name="mail-outline"></ion-icon> Correo: N00349919@upn.pe</p>
+                <p data-es="Número: 929546389" data-en="Number: 929546389"><ion-icon name="call-outline"></ion-icon> Número: 929546389</p>
+            </div>
+            <div class="contacto-item" data-nombre="Manuel Cuestas">
+                <img src="/img/Manuel.jpeg" alt="Imagen de Manuel">
+                <p data-es="Nombre: Manuel Alejandro Cuestas López" data-en="Name: Manuel Alejandro Cuestas López"><ion-icon name="accessibility-outline"></ion-icon>Nombre: Manuel Alejandro Cuestas López</p>
+                <p data-es="Correo: N00332307@upn.pe" data-en="Email: N00332307@upn.pe"><ion-icon name="mail-outline"></ion-icon>Correo: N00332307@upn.pe</p>
+                <p data-es="Número: 957847348" data-en="Number: 957847348"><ion-icon name="call-outline"></ion-icon>Número: 957847348</p>
+            </div>
+            <div class="contacto-item" data-nombre="Fernando Fernandez">
+                <img src="/img/Fernando.jpeg" alt="Imagen de Fernando">
+                <p data-es="Nombre: Fernando Benito Joaquin Fernandez Navarrete" data-en="Name: Fernando Benito Joaquin Fernandez Navarrete"><ion-icon name="accessibility-outline"></ion-icon>Nombre: Fernando Benito Joaquin Fernandez Navarrete</p>
+                <p data-es="Correo: N00292042@upn.pe" data-en="Email: N00292042@upn.pe"><ion-icon name="mail-outline"></ion-icon>Correo: N00292042@upn.pe</p>
+                <p data-es="Número: 927626460" data-en="Number: 927626460"><ion-icon name="call-outline"></ion-icon>Número: 927626460</p>
+            </div>
+            <div class="contacto-item" data-nombre="Alexandro Guevara">
+                <img src="/img/Alexandro.jpeg" alt="Imagen de Alexandro">
+                <p data-es="Nombre: Alexandro Jair Guevara Ricra" data-en="Name: Alexandro Jair Guevara Ricra"><ion-icon name="accessibility-outline"></ion-icon>Nombre: Alexandro Jair Guevara Ricra</p>
+                <p data-es="Correo: N00326492@upn.pe" data-en="Email: N00326492@upn.pe"><ion-icon name="mail-outline"></ion-icon>Correo: N00326492@upn.pe</p>
+                <p data-es="Número: 932701330" data-en="Number: 932701330"><ion-icon name="call-outline"></ion-icon>Número: 932701330</p>
+            </div>
+            <div class="contacto-item" data-nombre="Luis Huaynates">
+                <img src="/img/Luis.jpeg" alt="Imagen de Luis">
+                <p data-es="Nombre: Nombre: Luis Fernando Huaynates Valencia" data-en="Name: Nombre: Luis Fernando Huaynates Valencia"><ion-icon name="accessibility-outline"></ion-icon>Nombre: Luis Fernando Huaynates Valencia</p>
+                <p data-es="Correo: N00318641@upn.pe" data-en="Email: N00318641@upn.pe"><ion-icon name="mail-outline"></ion-icon>Correo: N00318641@upn.pe</p>
+                <p data-es="Número: 979996147" data-en="Number: 979996147"><ion-icon name="call-outline"></ion-icon>Número: 979996147</p>
+            </div>
+        </div>
+
+        <div class="contact-form" id="contact-form">
+            <div class="contact-form-content">
+                <span class="close-form">&times;</span>
+                <h2 id="contact-title" data-es="Contacta a" data-en="Contact to">Contacta a </h2>
+                <form>
+                    <label for="name" data-es="Nombre:" data-en="Name:">Nombre:</label>
+                    <input type="text" id="name" name="name" placeholder="Ingrese su nombre" data-es="Ingrese su nombre" data-en="Type your name">
+                    <label for="email" data-es="Correo:" data-en="Email:">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Ingrese su email" data-es="Ingrese su email" data-en="Type your email">
+                    <label for="message" data-es="Mensaje:" data-en="Message:">Mensaje:</label>
+                    <textarea id="message" name="message" placeholder="Ingrese el mensaje..." id="mensaje" data-es="Ingrese el mensaje..." data-en="Type the message..."></textarea> <!--Modificar-->
+                    <button type="submit" data-es="Enviar" data-en="Send">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Inicio de sesión y registro-->
+
+    <div class="covertura" aria-labelledby="iniciar-sesion" hidden> <!--Clase covertura. Inicialmente oculta hasta que se le dé al botón-->
+        <span class="close" aria-label="Cerrar formulario de inicio de sesión"><ion-icon name="close-circle-outline"></ion-icon></span> <!--Importar ícono x con clase close-->
+
+        <!--Inicio de sesión-->
+        <div class="logeo login"> <!--Para logearse-->
+            <h2 data-es="Iniciar sesión" data-en="Login">Iniciar sesión</h2>
+            <form action="#"> <!--Inicio de formulario sin acción definida (#), por lo que no enviará datos a ninguna parte-->
+                <div class="cajas"> 
+                    <!--ion-icon se extrajo de la página de abajo, importa una imagen de correo-->
+                    <span class="icono"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" required placeholder=" "> <!--Input que pide texto email obligatoriamente-->
+                    <label data-es="Correo electrónico" data-en="Email">Correo electrónico</label> <!--Label que indica que se ingrese correo-->
+                </div>
+                <div class="cajas">
+                    <!--ion-icon se extrajo de la página de abajo, importa una imagen de candado-->
+                    <span class="icono"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" required placeholder=" "> <!--Input que pide texto contraseña obligatoriamente-->
+                    <label data-es="Contraseña" data-en="Password">Contraseña</label> <!--Label que indica que se ingrese contraseña-->
+                </div>
+                <div class="recuerda">
+                    <label data-es="Recuérdame" data-en="Remember me"><input type="checkbox">Recuérdame</label> <!--Checkbox para no tener que iniciar sesión al cerra página-->
+                    <a href="#" data-es="¿Olvidaste tu contraseña?" data-en="Forget your password?">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="boton" data-es="Iniciar sesión" data-en="Login">Iniciar sesión</button> <!--Botón de tipo submit para poder clickear-->
+                <div class="registro-sesion">
+                    <p>¿Aún no tienes una cuenta?  <a href="#" class="link-inicio">Regístrate aquí</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!--Registro de nuevo usuarios-->
+        <div class="logeo registro"> 
+            <h2 data-es="Regístrate" data-en="Login">Register</h2>
+            <form action="#">
+                <div class="cajas">
+                    <!--ion-icon se extrajo de la página de abajo, importa una imagen de usuario-->
+                    <span class="icono"><ion-icon name="person-circle-outline"></ion-icon></ion-icon></span>
+                    <input type="text" required placeholder=" "> <!--Pedir texto email obligatoriamente-->
+                    <label data-es="Nombre de usuario" data-en="Username">Nombre de usuario</label> <!--Label que indica que se ingrese correo-->
+                </div>
+                <div class="cajas">
+                    <!--ion-icon se extrajo de la página de abajo, importa una imagen de correo-->
+                    <span class="icono"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" required placeholder=" "> <!--Pedir texto email obligatoriamente-->
+                    <label data-es="Correo electrónico" data-en="Email">Correo electrónico</label> <!--Label que indica que se ingrese correo-->
+                </div>
+                <div class="cajas">
+                    <!--ion-icon se extrajo de la página de abajo, importa una imagen de candado-->
+                    <span class="icono"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" required placeholder=" "> <!--Pedir texto contraseña obligatoriamente-->
+                    <label data-es="Contraseña" data-en="Password">Contraseña</label> <!--Label que indica que se ingrese contraseña-->
+                </div>
+                <div class="recuerda">
+                    <label data-es="Acepto los términos y condiciones de uso" data-en="I accept the terms and conditions of use"><input type="checkbox">Acepto los términos y condiciones de uso</label> <!--Checkbox-->
+                </div>
+                <button type="submit" class="boton" data-es="Registrarse" data-en="Register">Registrarse</button>
+                <div class="registro-sesion">
+                    <p>¿Ya tienes una cuenta?  <a href="#" class="link-registro">Inicia sesión aquí</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenedor para el mensaje de audio -->
+    <div id="mensaje" aria-live="polite"></div>
+
+    <!--Pie de página-->
+    <footer> 
+        <div class="pie-de-pagina">
+            <p data-es="&copy; 2024 Mundo en Voz. Todos los derechos reservados." data-en="&copy; 2024 Mundo en Voz. All rights reserved.">&copy; 2024 Mundo en Voz. Todos los derechos reservados.</p> <!--Texto como párrafo-->
+            <nav> <!--Navegadores como hipervínculos-->
+                <a href="#" data-es="Términos y condiciones" data-en="Terms & Conditions">Términos y condiciones</a>
+                <a href="#" data-es="Política de privacidad" data-en="Privacy politics">Política de privacidad</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!--Conexión con js'ss-->
+    <script src ="/js/main.js" defer></script> 
+    <script src ="/js/infolibro.js" defer></script> 
+    <script src ="/js/idiomas.js" defer></script> 
+    <script src="/js/audioGuia.js" defer></script>
+    <script src="/js/atajos1.js" defer></script>
+    <script src="/js/comandosVoz.js" defer></script>
+    <!--Scripts extraídos de: https://ionic.io/ionicons/usage para íconos de cierre, correo, contraseñas y usuarios-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> <!--íconos para navegadores modernos-->
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> <!--íconos para navegadores antiguos-->
+
+</body>
+</html>

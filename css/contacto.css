@@ -1,0 +1,238 @@
+
+.info-cuadro {
+    position: fixed;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(13, 38, 77, 0.993);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: none; /* Inicialmente oculto */
+    z-index: 10000;
+}
+
+.info-cuadro p {
+    font-size: 1.2em;
+    color: rgba(13, 38, 77, 0.993);
+}
+
+.hidden {
+    visibility: hidden; /* Mantiene el espacio, pero oculta el texto */
+}
+
+.imagenes {
+    position: fixed;
+    top: 50%;
+    left: 70%; /* Ajustar para posicionar a la derecha del cuadro de información */
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 30%; /* Ajustar el ancho del contenedor de imágenes */
+    max-width: 800px;
+}
+
+.imagenes img {
+    width: 48%; /* Ajustar el ancho de las imágenes para que dos estén una al lado de la otra */
+    margin-bottom: 4%; /* Espacio entre las imágenes */
+}
+
+.imagenes img:nth-child(3) {
+    width: 100%; /* La tercera imagen ocupa todo el ancho */
+}
+
+.contacto{
+    display: none; /* Inicialmente oculto */
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 5% auto; 
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(13, 38, 77, 0.993);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 10000;
+}
+
+.contacto-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+}
+
+.contacto-item {
+    flex: 1 1 30%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contacto-item img {
+    width: 100%;
+    max-width: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.contacto-item p {
+    display:flex;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 1em;
+    color: rgba(13, 38, 77, 0.993);
+    text-align: center;
+}
+
+.contacto-imagenes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px; /* Separar las imágenes de abajo de las de arriba */
+}
+
+.contacto-imagenes img {
+    width: 100%;
+    object-fit: cover; /* Asegurar que las imágenes mantengan su proporción */
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.contacto-item ion-icon {
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 1.2em; /* Tamaño del ícono */
+    color: rgba(13, 38, 77, 0.993); /* Color de los íconos */
+}
+
+.contact-form {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.contact-form-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.contact-form-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-form-content label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.contact-form-content input,
+.contact-form-content textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.contact-form-content input:focus,
+.contact-form-content textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.contact-form-content textarea {
+    height: 120px;
+    resize: none;
+}
+
+.contact-form-content button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form-content button:hover {
+    background: #0056b3;
+}
+
+.close-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.close-form:hover {
+    color: #ff0000;
+}
+
+.contacto-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .info-cuadro {
+        width: 90%; /* Ajusta el ancho del cuadro de información */
+        left: 50%; /* Centra el cuadro */
+        transform: translate(-50%, -50%); /* Mantiene el centrado */
+    }
+
+    .imagenes {
+        width: 90%; /* Ajusta el ancho del contenedor de imágenes */
+        left: 50%; /* Centra el contenedor */
+        transform: translate(-50%, -50%); /* Mantiene el centrado */
+    }
+
+    .contacto-item {
+        flex: 1 1 100%; /* Cada item ocupa el 100% */
+    }
+
+    .contact-form-content {
+        width: 90%; /* Ajusta el ancho del formulario */
+    }
+}

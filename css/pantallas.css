@@ -1,0 +1,71 @@
+/* Media Queries para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    main{
+        flex-direction: column;
+        padding:20px;
+    }
+    .contenido {
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .texto-beneficios {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    #titulo-beneficios {
+        font-size: 2.5em;
+        text-align: center;
+    }
+
+    .columnas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .columna {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    #imagen-libro {
+        max-width: 300px;
+    }
+
+    .beneficios {
+        padding-left: 20px;
+    }
+
+    .covertura {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
+        padding: 20px;
+    }
+
+    .logeo {
+        padding: 20px;
+    }
+
+    .btn-login {
+        width: 100px;
+        height: 45px;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #titulo-beneficios {
+        font-size: 2em;
+    }
+
+    .columna h3 {
+        font-size: 1em;
+    }
+
+    #imagen-libro {
+        max-width: 250px;
+    }
+}

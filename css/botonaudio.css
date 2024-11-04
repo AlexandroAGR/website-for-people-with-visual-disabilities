@@ -1,0 +1,31 @@
+#toggle-audio {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    margin:10px;
+    border-radius: 20px; /* Esquinas redondeadas */
+    padding: 15px 890px; /* Altura y ancho del botón, más ancho */
+    font-size: 1.2em; /* Tamaño del texto */
+    cursor: pointer; /* Cursor de puntero al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    display: inline-block; /* Asegurar que el botón respete el padding */
+    margin-top: 20px; /* Separación de los botones de filtrado */
+}
+
+#toggle-audio:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+    transform: scale(0.9); /* Efecto de aumento al pasar el mouse */
+}
+
+#toggle-audio:active {
+    transform: scale(0.95); /* Efecto de reducción al hacer clic */
+}
+
+@media (max-width: 768px) {
+    #toggle-audio {
+        padding: 15px 20px; /* Ajusta el padding horizontal */
+        font-size: 1em; /* Ajusta el tamaño del texto */
+        width: 100%; /* Botón ocupa todo el ancho */
+        margin: 10px 0; /* Espacio vertical */
+    }
+}

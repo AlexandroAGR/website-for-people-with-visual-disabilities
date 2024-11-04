@@ -1,0 +1,44 @@
+footer {
+    background-color: black; /* Fondo negro */
+    color: white; /* Letra en blanco */
+    padding: 20px 0; /* Espaciado arriba y abajo */
+    text-align: center; /* Centrar texto */
+    position: relative;
+    bottom:0; /*Abajo del todo*/
+    left:0; /*Abarcar todo el espacio*/
+    width: 100%; /* Abarcar todo el ancho de la pantalla */
+    margin: 0 auto;
+    margin-top: auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pie-de-pagina {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Para que los elementos estén uno debajo de otro */
+    align-items: center;
+}
+
+.pie-de-pagina p {
+    margin: 10px 0; /* Espacio entre el texto y los enlaces */
+    font-size: 0.9em;
+}
+
+footer nav {
+    margin-top: 10px; /* Separación del texto de derechos reservados */
+}
+
+footer nav a {
+    color: white; /* Color de los enlaces en blanco */
+    margin: 0 15px; /* Espaciado entre los enlaces */
+    text-decoration: none; /* Quitar subrayado */
+    font-size: 0.9em;
+    transition: color 0.3s; /* Transición suave en el cambio de color */
+}
+
+footer nav a:hover {
+    color: #ffce00; /* Color amarillo al pasar el cursor */
+}
